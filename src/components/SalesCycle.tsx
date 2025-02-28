@@ -123,6 +123,24 @@ const SalesCycle = () => {
               // Calculate rotational angle for each segment
               const rotationAngle = (index * (360 / steps.length)) + 270; // Offset to start from top
 
+              // Define custom clip path based on index
+              let customClipPath;
+              if (index === 0) {
+                customClipPath = 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)';
+              } else if (index === 1) {
+                customClipPath = 'polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%)';
+              } else if (index === 2) {
+                customClipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%)';
+              } else if (index === 3) {
+                customClipPath = 'polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%)';
+              } else if (index === 4) {
+                customClipPath = 'polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%)';
+              } else if (index === 5) {
+                customClipPath = 'polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%)';
+              } else {
+                customClipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%)';
+              }
+
               return (
                 <div 
                   key={index}
@@ -133,15 +151,7 @@ const SalesCycle = () => {
                     left: `${350 + x - segmentWidth/2}px`,
                     top: `${350 + y - segmentHeight/2}px`,
                     transform: `rotate(${rotationAngle}deg)`,
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    // Use custom clip path to create segments
-                    clipPath: index === 0 ? 'polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%)' :
-                              index === 1 ? 'polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%)' :
-                              index === 2 ? 'polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%)' :
-                              index === 3 ? 'polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%)' :
-                              index === 4 ? 'polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%)' :
-                              index === 5 ? 'polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%)' :
-                              'polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%)',
+                    clipPath: customClipPath,
                     zIndex: 5
                   }}
                 >
