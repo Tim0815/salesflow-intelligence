@@ -16,43 +16,43 @@ const SalesCycle = () => {
       number: "01",
       title: "Prospecting",
       icon: <Users className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FF4365]"
+      bgColor: "bg-[#FDE1D3]" // Soft Peach
     },
     {
       number: "02",
       title: "Prepare to contact",
       icon: <LightbulbIcon className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FF6B8B]"
+      bgColor: "bg-[#FFDEE2]" // Soft Pink
     },
     {
       number: "03",
       title: "Make contact and qualify",
       icon: <MessageSquare className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#C25B9C]"
+      bgColor: "bg-[#FEC6A1]" // Soft Orange
     },
     {
       number: "04",
       title: "Nurture and build relationships",
       icon: <Heart className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#7D3C98]"
+      bgColor: "bg-[#FEF7CD]" // Soft Yellow
     },
     {
       number: "05",
       title: "Present offer",
       icon: <FileText className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#0C2D48]"
+      bgColor: "bg-[#F2FCE2]" // Soft Green
     },
     {
       number: "06",
       title: "Handle objections",
       icon: <MessageCircle className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#45B69C]"
+      bgColor: "bg-[#FEC6A1]" // Soft Orange
     },
     {
       number: "07",
       title: "Close the deal!",
       icon: <DollarSign className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#E31837]"
+      bgColor: "bg-[#FFDEE2]" // Soft Pink
     }
   ];
 
@@ -60,8 +60,8 @@ const SalesCycle = () => {
     <section className="py-16 bg-secondary/10">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 rounded-full">
-            <span className="text-xs font-semibold tracking-wide text-primary uppercase">
+          <div className="inline-block mb-4 px-3 py-1 bg-[#F2FCE2] rounded-full">
+            <span className="text-xs font-semibold tracking-wide text-[#2E7D32] uppercase">
               Vertriebszyklus
             </span>
           </div>
@@ -85,11 +85,11 @@ const SalesCycle = () => {
                   <div className="flex-shrink-0">
                     {step.icon}
                   </div>
-                  <div className="text-white">
+                  <div className="text-gray-800">
                     <h3 className="font-bold text-lg">{step.title}</h3>
                   </div>
                 </div>
-                <div className="text-white text-3xl font-bold">{step.number}</div>
+                <div className="text-gray-800 text-3xl font-bold">{step.number}</div>
               </div>
             ))}
           </div>
@@ -99,7 +99,7 @@ const SalesCycle = () => {
             {/* Center circle */}
             <div className="absolute rounded-full bg-white shadow-lg flex flex-col items-center justify-center"
               style={{ width: '250px', height: '250px', top: '225px', left: '225px', zIndex: 10 }}>
-              <h3 className="text-3xl font-display font-bold text-center">
+              <h3 className="text-3xl font-display font-bold text-center text-gray-800">
                 7 STUFEN
                 <br />
                 DES 
@@ -158,10 +158,10 @@ const SalesCycle = () => {
                   <div className="transform" style={{ transform: `rotate(-${rotationAngle}deg)` }}>
                     <div className="flex flex-col items-center">
                       <div className="mb-2">
-                        {step.icon}
+                        {React.cloneElement(step.icon, { className: "h-10 w-10 text-gray-800" })}
                       </div>
-                      <h3 className="text-white font-bold text-xl mb-1 text-center">{step.title}</h3>
-                      <div className="text-white text-4xl font-bold">{step.number}</div>
+                      <h3 className="text-gray-800 font-bold text-xl mb-1 text-center">{step.title}</h3>
+                      <div className="text-gray-800 text-4xl font-bold">{step.number}</div>
                     </div>
                   </div>
                 </div>
@@ -170,9 +170,9 @@ const SalesCycle = () => {
 
             {/* Alternative: Use the uploaded image */}
             <img 
-              src="/lovable-uploads/dd91e436-c29a-437f-9b19-35ec89db81e7.png" 
+              src="/lovable-uploads/3c7c82d7-c0ae-4584-956a-5970dc883093.png" 
               alt="7 Stages of the Sales Cycle" 
-              className="absolute top-0 left-0 w-full h-full object-contain hidden md:block" 
+              className="absolute top-0 left-0 w-full h-full object-contain hidden" 
               style={{ zIndex: 20 }}
             />
           </div>
