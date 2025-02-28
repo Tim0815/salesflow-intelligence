@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
+import SalesCycle from '@/components/SalesCycle';
 import PricingPlans from '@/components/PricingPlans';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
@@ -48,6 +49,7 @@ const Index = () => {
         <Hero />
         <Features />
         <HowItWorks />
+        <SalesCycle />
         <Testimonials />
         <PricingPlans />
         <CTA />
