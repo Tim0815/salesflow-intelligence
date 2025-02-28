@@ -9,8 +9,8 @@ const HowItWorks = () => {
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 animate-fade-up">
-            <div className="inline-block mb-4 px-3 py-1 bg-primary/10 rounded-full">
-              <span className="text-xs font-semibold tracking-wide text-primary uppercase">
+            <div className="inline-block mb-4 px-3 py-1 bg-[#E5DEFF] rounded-full">
+              <span className="text-xs font-semibold tracking-wide text-[#8B5CF6] uppercase">
                 Wie es funktioniert
               </span>
             </div>
@@ -23,7 +23,7 @@ const HowItWorks = () => {
 
             <div className="space-y-4 mb-8">
               <div className="flex items-start">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mr-3 mt-0.5" />
+                <CheckCircle className="h-6 w-6 text-[#8B5CF6] flex-shrink-0 mr-3 mt-0.5" />
                 <div>
                   <h3 className="font-semibold mb-1">Verbinden Sie Ihre Datenquellen</h3>
                   <p className="text-sm text-muted-foreground">
@@ -33,7 +33,7 @@ const HowItWorks = () => {
               </div>
               
               <div className="flex items-start">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mr-3 mt-0.5" />
+                <CheckCircle className="h-6 w-6 text-[#8B5CF6] flex-shrink-0 mr-3 mt-0.5" />
                 <div>
                   <h3 className="font-semibold mb-1">Aktivieren Sie die KI-Analyse</h3>
                   <p className="text-sm text-muted-foreground">
@@ -43,7 +43,7 @@ const HowItWorks = () => {
               </div>
               
               <div className="flex items-start">
-                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mr-3 mt-0.5" />
+                <CheckCircle className="h-6 w-6 text-[#8B5CF6] flex-shrink-0 mr-3 mt-0.5" />
                 <div>
                   <h3 className="font-semibold mb-1">Optimieren und Skalieren</h3>
                   <p className="text-sm text-muted-foreground">
@@ -53,7 +53,7 @@ const HowItWorks = () => {
               </div>
             </div>
 
-            <Button className="rounded-full px-8 py-6 text-base bg-primary hover:bg-primary/90 text-white shadow-md">
+            <Button className="rounded-full px-8 py-6 text-base bg-[#8B5CF6] hover:bg-[#8B5CF6]/90 text-white shadow-md">
               Demo vereinbaren
             </Button>
           </div>
@@ -66,7 +66,7 @@ const HowItWorks = () => {
                 className="w-full h-auto rounded-xl" 
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#8B5CF6]/10 to-transparent"></div>
             </div>
           </div>
         </div>

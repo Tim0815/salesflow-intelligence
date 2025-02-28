@@ -38,7 +38,7 @@ const Header = () => {
       <div className="container max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <span className="text-2xl font-display font-bold text-foreground">
-            Sales<span className="text-primary">Flow</span>
+            Sales<span className="text-[#8B5CF6]">Flow</span>
           </span>
         </Link>
 
@@ -65,7 +65,7 @@ const Header = () => {
           <Button
             variant="default"
             size="sm"
-            className="ml-4 rounded-full bg-primary hover:bg-primary/90 text-white"
+            className="ml-4 rounded-full bg-[#8B5CF6] hover:bg-[#8B5CF6]/90 text-white"
           >
             Start Free Trial
           </Button>
@@ -108,7 +108,7 @@ const Header = () => {
             <Button
               variant="default"
               size="default"
-              className="w-full mt-2 rounded-full bg-primary hover:bg-primary/90 text-white"
+              className="w-full mt-2 rounded-full bg-[#8B5CF6] hover:bg-[#8B5CF6]/90 text-white"
               onClick={handleLinkClick}
             >
               Start Free Trial

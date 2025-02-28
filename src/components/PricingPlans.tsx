@@ -28,9 +28,9 @@ const PricingPlan: React.FC<PlanProps> = ({
   const currentPrice = billing === 'monthly' ? price : yearlyPrice;
   
   return (
-    <div className={`relative p-8 rounded-2xl ${popular ? 'border-2 border-primary shadow-lg' : 'border border-border'} flex flex-col h-full animate-fade-up`}>
+    <div className={`relative p-8 rounded-2xl ${popular ? 'border-2 border-[#8B5CF6] shadow-lg' : 'border border-border'} flex flex-col h-full animate-fade-up`}>
       {popular && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs font-semibold py-1 px-4 rounded-full">
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#8B5CF6] text-white text-xs font-semibold py-1 px-4 rounded-full">
           Meistgewählt
         </div>
       )}
@@ -50,7 +50,7 @@ const PricingPlan: React.FC<PlanProps> = ({
       <ul className="space-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start">
-            <Check className="h-5 w-5 text-primary flex-shrink-0 mr-2" />
+            <Check className="h-5 w-5 text-[#8B5CF6] flex-shrink-0 mr-2" />
             <span className="text-sm">{feature}</span>
           </li>
         ))}
@@ -59,7 +59,7 @@ const PricingPlan: React.FC<PlanProps> = ({
       <Button
         variant={popular ? "default" : "outline"}
         className={`w-full rounded-lg ${
-          popular ? "bg-primary hover:bg-primary/90 text-white" : "border-primary/20 hover:border-primary/50 text-foreground hover:bg-primary/5"
+          popular ? "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90 text-white" : "border-[#8B5CF6]/20 hover:border-[#8B5CF6]/50 text-foreground hover:bg-[#8B5CF6]/5"
         }`}
       >
         {buttonText}
@@ -133,8 +133,8 @@ const PricingPlans = () => {
     <section id="pricing" className="py-20">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 rounded-full">
-            <span className="text-xs font-semibold tracking-wide text-primary uppercase">
+          <div className="inline-block mb-4 px-3 py-1 bg-[#E5DEFF] rounded-full">
+            <span className="text-xs font-semibold tracking-wide text-[#8B5CF6] uppercase">
               Preise
             </span>
           </div>
@@ -166,7 +166,7 @@ const PricingPlans = () => {
         
         <p className="text-center text-sm text-muted-foreground mt-8">
           Alle Preise verstehen sich zuzüglich der gesetzlichen Mehrwertsteuer. 
-          Benötigen Sie eine individuelle Lösung? <a href="#" className="text-primary hover:underline">Kontaktieren Sie uns</a>.
+          Benötigen Sie eine individuelle Lösung? <a href="#" className="text-[#8B5CF6] hover:underline">Kontaktieren Sie uns</a>.
         </p>
       </div>
     </section>

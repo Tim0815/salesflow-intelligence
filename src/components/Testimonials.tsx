@@ -17,7 +17,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
 }) => {
   return (
     <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow animate-fade-up">
-      <Quotation className="h-8 w-8 text-primary/20 mb-4" />
+      <Quotation className="h-8 w-8 text-[#8B5CF6]/20 mb-4" />
       <p className="text-foreground mb-6 italic">{quote}</p>
       <div>
         <p className="font-semibold">{author}</p>
@@ -58,8 +58,8 @@ const Testimonials = () => {
     <section className="py-20 bg-secondary/30">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 rounded-full">
-            <span className="text-xs font-semibold tracking-wide text-primary uppercase">
+          <div className="inline-block mb-4 px-3 py-1 bg-[#E5DEFF] rounded-full">
+            <span className="text-xs font-semibold tracking-wide text-[#8B5CF6] uppercase">
               Kundenstimmen
             </span>
           </div>

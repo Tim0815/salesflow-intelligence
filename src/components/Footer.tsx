@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <div className="mb-4">
               <span className="text-xl font-display font-bold text-foreground">
-                Sales<span className="text-primary">Flow</span>
+                Sales<span className="text-[#8B5CF6]">Flow</span>
               </span>
             </div>
             <p className="text-muted-foreground text-sm mb-4">

@@ -9,8 +9,8 @@ const FeatureItem = ({ icon: Icon, title, description }: {
 }) => {
   return (
     <div className="p-6 bg-card rounded-xl hover:shadow-md transition-shadow duration-300 animate-fade-up">
-      <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
-        <Icon className="h-6 w-6 text-primary" />
+      <div className="h-12 w-12 bg-[#E5DEFF] rounded-lg flex items-center justify-center mb-5">
+        <Icon className="h-6 w-6 text-[#8B5CF6]" />
       </div>
       <h3 className="text-lg font-semibold mb-3">{title}</h3>
       <p className="text-muted-foreground text-sm">{description}</p>
@@ -56,8 +56,8 @@ const Features = () => {
     <section id="features" className="py-20">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 rounded-full">
-            <span className="text-xs font-semibold tracking-wide text-primary uppercase">
+          <div className="inline-block mb-4 px-3 py-1 bg-[#E5DEFF] rounded-full">
+            <span className="text-xs font-semibold tracking-wide text-[#8B5CF6] uppercase">
               Funktionen
             </span>
           </div>
