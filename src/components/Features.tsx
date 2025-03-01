@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Brain, Clock, DollarSign, Globe, BarChart3, Users, Zap } from "lucide-react";
 
 const FeatureItem = ({ icon: Icon, title, description }: { 
@@ -7,10 +7,43 @@ const FeatureItem = ({ icon: Icon, title, description }: {
   title: string;
   description: string;
 }) => {
+  const itemRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (itemRef.current) {
+      observer.observe(itemRef.current);
+    }
+    
+    return () => {
+      if (itemRef.current) observer.unobserve(itemRef.current);
+    };
+  }, []);
+  
+  const [isHovered, setIsHovered] = React.useState(false);
+  
   return (
-    <div className="p-6 bg-card rounded-xl hover:shadow-md transition-shadow duration-300 animate-fade-up">
-      <div className="h-12 w-12 bg-[#E5DEFF] rounded-lg flex items-center justify-center mb-5">
-        <Icon className="h-6 w-6 text-[#8B5CF6]" />
+    <div 
+      ref={itemRef}
+      className={`p-6 bg-card rounded-xl hover:shadow-md transition-all duration-300 opacity-0 cursor-pointer ${isHovered ? 'scale-105' : ''}`}
+      onClick={() => alert(`Feature: ${title}`)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="h-12 w-12 bg-[#F2DCB3]/30 rounded-lg flex items-center justify-center mb-5">
+        <Icon className="h-6 w-6 text-gray-700" />
       </div>
       <h3 className="text-lg font-semibold mb-3">{title}</h3>
       <p className="text-muted-foreground text-sm">{description}</p>
@@ -19,53 +52,78 @@ const FeatureItem = ({ icon: Icon, title, description }: {
 };
 
 const Features = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   const features = [
     {
       icon: Brain,
-      title: "KI-gestützte Analyse",
-      description: "Nutzen Sie fortschrittliche KI, um wertvolle Einblicke aus Ihren Leads zu gewinnen und Verkaufschancen zu identifizieren."
+      title: "AI-Powered Analysis",
+      description: "Use advanced AI to gain valuable insights from your leads and identify sales opportunities."
     },
     {
       icon: Clock,
-      title: "Zeitersparnis",
-      description: "Automatisieren Sie zeitaufwändige Aufgaben und gewinnen Sie Stunden zurück für strategische Vertriebsaktivitäten."
+      title: "Time Savings",
+      description: "Automate time-consuming tasks and reclaim hours for strategic sales activities."
     },
     {
       icon: BarChart3,
-      title: "Umsatzprognosen",
-      description: "Erhalten Sie präzise Vorhersagen zur Umsatzentwicklung basierend auf historischen Daten und KI-Algorithmen."
+      title: "Revenue Forecasting",
+      description: "Get precise sales projections based on historical data and AI algorithms."
     },
     {
       icon: Users,
-      title: "Lead-Qualifizierung",
-      description: "Identifizieren Sie automatisch hochwertige Leads und priorisieren Sie Ihre Vertriebsbemühungen effektiv."
+      title: "Lead Qualification",
+      description: "Automatically identify high-quality leads and prioritize your sales efforts effectively."
     },
     {
       icon: Globe,
-      title: "Globale Reichweite",
-      description: "Skalieren Sie Ihre Vertriebsaktivitäten international mit mehrsprachiger Unterstützung und lokalisierten Erkenntnissen."
+      title: "Global Reach",
+      description: "Scale your sales activities internationally with multilingual support and localized insights."
     },
     {
       icon: Zap,
-      title: "Nahtlose Integration",
-      description: "Verbinden Sie sich mühelos mit Ihren bestehenden CRM-Systemen und Vertriebstools für optimale Effizienz."
+      title: "Seamless Integration",
+      description: "Connect effortlessly with your existing CRM systems and sales tools for optimal efficiency."
     }
   ];
 
   return (
-    <section id="features" className="py-20">
+    <section id="features" ref={sectionRef} className="py-20 opacity-0">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-3 py-1 bg-[#E5DEFF] rounded-full">
-            <span className="text-xs font-semibold tracking-wide text-[#8B5CF6] uppercase">
-              Funktionen
+          <div className="inline-block mb-4 px-3 py-1 bg-[#F2DCB3]/30 rounded-full">
+            <span className="text-xs font-semibold tracking-wide text-gray-700 uppercase">
+              Features
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Leistungsstarke Tools für den modernen Vertrieb
+            Powerful Tools for Modern Sales
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Unsere KI-Plattform bietet alles, was Vertriebsteams benötigen, um Leads effizient zu verwalten und Geschäftsabschlüsse zu beschleunigen.
+            Our AI platform offers everything sales teams need to efficiently manage leads and accelerate business closures.
           </p>
         </div>
 

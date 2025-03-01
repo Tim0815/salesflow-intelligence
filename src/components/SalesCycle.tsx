@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { 
   Users, 
   LightbulbIcon, 
@@ -11,6 +11,74 @@ import {
 } from "lucide-react";
 
 const SalesCycle = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const mobileViewRef = useRef<HTMLDivElement>(null);
+  const desktopViewRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    if (mobileViewRef.current) {
+      const mobileObserver = new IntersectionObserver(
+        (entries) => {
+          const children = Array.from(mobileViewRef.current?.children || []);
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              children.forEach((child, index) => {
+                setTimeout(() => {
+                  child.classList.add('animate-fade-up');
+                  child.classList.remove('opacity-0');
+                }, index * 100);
+              });
+              mobileObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      
+      mobileObserver.observe(mobileViewRef.current);
+    }
+    
+    if (desktopViewRef.current) {
+      const desktopObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-up');
+              entry.target.classList.remove('opacity-0');
+              desktopObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      
+      desktopObserver.observe(desktopViewRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (mobileViewRef.current) observer.unobserve(mobileViewRef.current);
+      if (desktopViewRef.current) observer.unobserve(desktopViewRef.current);
+    };
+  }, []);
+
   const steps = [
     {
       number: "01",
@@ -22,64 +90,65 @@ const SalesCycle = () => {
       number: "02",
       title: "Prepare to contact",
       icon: <LightbulbIcon className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FFDEE2]" // Soft Pink
+      bgColor: "bg-[#F2DCB3]" // Soft Yellow
     },
     {
       number: "03",
       title: "Make contact and qualify",
       icon: <MessageSquare className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FEC6A1]" // Soft Orange
+      bgColor: "bg-[#F2C6DE]" // Soft Pink
     },
     {
       number: "04",
-      title: "Nurture and build relationships",
+      title: "Nurture relationships",
       icon: <Heart className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FEF7CD]" // Soft Yellow
+      bgColor: "bg-[#D6F0DD]" // Soft Green
     },
     {
       number: "05",
       title: "Present offer",
       icon: <FileText className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#F2FCE2]" // Soft Green
+      bgColor: "bg-[#FDE1D3]" // Soft Peach
     },
     {
       number: "06",
       title: "Handle objections",
       icon: <MessageCircle className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FEC6A1]" // Soft Orange
+      bgColor: "bg-[#F2DCB3]" // Soft Yellow
     },
     {
       number: "07",
       title: "Close the deal!",
       icon: <DollarSign className="h-10 w-10 text-white" />,
-      bgColor: "bg-[#FFDEE2]" // Soft Pink
+      bgColor: "bg-[#F2C6DE]" // Soft Pink
     }
   ];
 
   return (
-    <section className="py-16 bg-secondary/10">
+    <section ref={sectionRef} className="py-16 bg-secondary/10 opacity-0">
       <div className="container max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <div className="inline-block mb-4 px-3 py-1 bg-[#F2FCE2] rounded-full">
-            <span className="text-xs font-semibold tracking-wide text-[#2E7D32] uppercase">
-              Vertriebszyklus
+          <div className="inline-block mb-4 px-3 py-1 bg-[#D6F0DD]/30 rounded-full">
+            <span className="text-xs font-semibold tracking-wide text-gray-700 uppercase">
+              Sales Cycle
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Die 7 Stufen des Verkaufszyklus
+            The 7 Stages of the Sales Cycle
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Mit SalesFlow AI optimieren Sie jeden Schritt Ihres Verkaufsprozesses und maximieren die Erfolgsquote.
+            With SalesFlow AI, you optimize every step of your sales process and maximize your success rate.
           </p>
         </div>
 
         <div className="relative flex justify-center">
           {/* Mobile View: Stack all elements vertically */}
-          <div className="md:hidden space-y-4 w-full max-w-md">
+          <div ref={mobileViewRef} className="md:hidden space-y-4 w-full max-w-md">
             {steps.map((step, index) => (
               <div 
                 key={index} 
-                className={`${step.bgColor} p-6 rounded-lg flex items-center justify-between`}
+                className={`${step.bgColor} p-6 rounded-lg flex items-center justify-between opacity-0 hover:shadow-md transition-all cursor-pointer`}
+                onClick={() => alert(`Step ${index + 1}: ${step.title}`)}
               >
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
@@ -95,16 +164,18 @@ const SalesCycle = () => {
           </div>
 
           {/* Desktop View: Circular diagram */}
-          <div className="hidden md:block relative" style={{ width: '700px', height: '700px' }}>
+          <div ref={desktopViewRef} className="hidden md:block relative opacity-0" style={{ width: '700px', height: '700px' }}>
             {/* Center circle */}
-            <div className="absolute rounded-full bg-white shadow-lg flex flex-col items-center justify-center"
-              style={{ width: '250px', height: '250px', top: '225px', left: '225px', zIndex: 10 }}>
+            <div className="absolute rounded-full bg-white shadow-lg flex flex-col items-center justify-center hover:shadow-xl transition-all cursor-pointer"
+              style={{ width: '250px', height: '250px', top: '225px', left: '225px', zIndex: 10 }}
+              onClick={() => alert("The 7 Stages of the Sales Cycle")}
+            >
               <h3 className="text-3xl font-display font-bold text-center text-gray-800">
-                7 STUFEN
+                7 STAGES
                 <br />
-                DES 
+                OF THE 
                 <br />
-                VERKAUFSZYKLUS
+                SALES CYCLE
               </h3>
             </div>
 
@@ -144,7 +215,7 @@ const SalesCycle = () => {
               return (
                 <div 
                   key={index}
-                  className={`absolute ${step.bgColor} rounded-lg p-6 transform flex flex-col items-center justify-center`}
+                  className={`absolute ${step.bgColor} rounded-lg p-6 transform flex flex-col items-center justify-center hover:brightness-105 transition-all cursor-pointer`}
                   style={{
                     width: `${segmentWidth}px`,
                     height: `${segmentHeight}px`,
@@ -154,6 +225,7 @@ const SalesCycle = () => {
                     clipPath: customClipPath,
                     zIndex: 5
                   }}
+                  onClick={() => alert(`Step ${index + 1}: ${step.title}`)}
                 >
                   <div className="transform" style={{ transform: `rotate(-${rotationAngle}deg)` }}>
                     <div className="flex flex-col items-center">
@@ -167,14 +239,6 @@ const SalesCycle = () => {
                 </div>
               );
             })}
-
-            {/* Alternative: Use the uploaded image */}
-            <img 
-              src="/lovable-uploads/3c7c82d7-c0ae-4584-956a-5970dc883093.png" 
-              alt="7 Stages of the Sales Cycle" 
-              className="absolute top-0 left-0 w-full h-full object-contain hidden" 
-              style={{ zIndex: 20 }}
-            />
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
 import SalesCycle from '@/components/SalesCycle';
 import PricingPlans from '@/components/PricingPlans';
-import Testimonials from '@/components/Testimonials';
+import AIUseCase from '@/components/AIUseCase';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 
@@ -50,7 +50,7 @@ const Index = () => {
         <Features />
         <HowItWorks />
         <SalesCycle />
-        <Testimonials />
+        <AIUseCase />
         <PricingPlans />
         <CTA />
       </main>
